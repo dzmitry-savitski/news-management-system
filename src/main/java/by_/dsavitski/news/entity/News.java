@@ -76,4 +76,37 @@ public class News {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof News)) return false;
+
+        News news = (News) o;
+
+        if (id != news.id) return false;
+        if (title != null ? !title.equals(news.title) : news.title != null) return false;
+        if (date != null ? !date.equals(news.date) : news.date != null) return false;
+        return body != null ? body.equals(news.body) : news.body == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (body != null ? body.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", date=" + date +
+                ", body='" + body + '\'' +
+                '}';
+    }
 }

@@ -5,7 +5,6 @@ import by_.dsavitski.news.config.db.DataSourceContext;
 import by_.dsavitski.news.config.db.PersistenceContext;
 import by_.dsavitski.news.config.web.WebConfig;
 import by_.dsavitski.news.entity.Comment;
-import by_.dsavitski.news.entity.News;
 import by_.dsavitski.news.repository.CommentRepository;
 import by_.dsavitski.news.repository.NewsRepository;
 import org.junit.Test;
@@ -16,11 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -53,13 +47,12 @@ public class GeneralTest extends AbstractTransactionalJUnit4SpringContextTests {
 //        commentRepository.save(comment);
 
         Comment comment = new Comment();
-        commentRepository.insertByNewsId(1,"aaaaaaaaaaqqq");
+        commentRepository.insertByNewsId(1, "aaaaaaaaaaqqq");
 
         System.out.println(">>>>>>>>>>>>>>>>>>>");
     }
 
 }
-
 
 
 //@RunWith(SpringJUnit4ClassRunner.class)

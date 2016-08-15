@@ -10,7 +10,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.web.util.HtmlUtils;
 
-import java.util.Date;
 import java.util.Locale;
 
 @Component
@@ -42,7 +41,7 @@ public class NewsValidator implements Validator {
         News news = (News) input;
 
         validateNotNull(news, errors);
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             return;
         }
 

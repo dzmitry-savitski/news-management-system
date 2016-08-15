@@ -1,15 +1,7 @@
 package by_.dsavitski.news.controller;
 
-import by_.dsavitski.news.repository.CommentRepository;
-import by_.dsavitski.news.service.CommentService;
-import by_.dsavitski.news.service.NewsService;
-import by_.dsavitski.news.service.impl.CommentServiceImpl;
-import by_.dsavitski.news.service.impl.NewsServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

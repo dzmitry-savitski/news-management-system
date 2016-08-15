@@ -2,11 +2,13 @@ var api = '/api/comments';
 var $commentsSubmitButton;
 var $ajaxLoader;
 var $commentsTable;
+var $commentInput;
 
 $(document).ready(function () {
     $commentsSubmitButton = $('#submitComment');
     $ajaxLoader = $('#ajaxLoader');
     $commentsTable = $('#commentsTable');
+    $commentInput = $('#body');
 
     $commentsSubmitButton.click(function (evt) {
         evt.preventDefault();
@@ -20,7 +22,7 @@ function addComment() {
     $commentsSubmitButton.attr("disabled", true);
     var JSONObject = {
         'id': newsId,
-        'body': $('#body').val()
+        'body': $commentInput.val()
     };
     $.ajax({
         type: 'POST',
@@ -29,6 +31,8 @@ function addComment() {
         data: JSON.stringify(JSONObject),
         dataType: 'json',
         success: function () {
+            $commentInput.val('');
+            $commentInput.focus();
             updateComments();
         },
         complete: function () {

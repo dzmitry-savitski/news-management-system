@@ -2,7 +2,6 @@ package by_.dsavitski.news.controller;
 
 import by_.dsavitski.news.entity.News;
 import by_.dsavitski.news.service.NewsService;
-import by_.dsavitski.news.service.impl.NewsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;

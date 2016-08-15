@@ -4,13 +4,9 @@ import by_.dsavitski.news.repository.CommentRepository;
 import by_.dsavitski.news.service.impl.CommentServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;

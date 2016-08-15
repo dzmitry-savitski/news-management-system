@@ -3,7 +3,6 @@ package by_.dsavitski.news.controller;
 import by_.dsavitski.news.entity.News;
 import by_.dsavitski.news.json.Message;
 import by_.dsavitski.news.service.NewsService;
-import by_.dsavitski.news.service.impl.NewsServiceImpl;
 import by_.dsavitski.news.validator.NewsValidator;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
