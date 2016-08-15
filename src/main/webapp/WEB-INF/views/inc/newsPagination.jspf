@@ -1,0 +1,45 @@
+<div>
+    <ul class="pagination">
+        <%--Previous arrow--%>
+        <c:choose>
+            <c:when test="${newsPage.hasPrevious()}">
+                <li>
+                    <a href="<c:url value="/news?page=${newsPage.number-1}"/>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            </c:when>
+            <c:otherwise>
+                <li class="disabled">
+                    <span aria-hidden="true">&laquo;</span>
+                </li>
+            </c:otherwise>
+        </c:choose>
+
+        <%--page numbers--%>
+        <c:forEach begin="1" end="${newsPage.totalPages}" var="pageNumber">
+            <%--pagination starst from 1 thus page must be decremented--%>
+            <c:set var="pageIndex" value="${pageNumber-1}"/>
+
+            <li class="${newsPage.number == pageIndex ? 'active' : ''}">
+                <a href="<c:url value="/news?page=${pageIndex}"/>">${pageNumber}</a>
+            </li>
+        </c:forEach>
+
+        <%--Next arrow--%>
+        <c:choose>
+            <c:when test="${newsPage.hasNext()}">
+                <li>
+                    <a href="<c:url value="/news?page=${newsPage.number+1}"/>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </c:when>
+            <c:otherwise>
+                <li class="disabled">
+                    <span aria-hidden="true">&raquo;</span>
+                </li>
+            </c:otherwise>
+        </c:choose>
+    </ul>
+ </div>

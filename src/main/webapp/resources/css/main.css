@@ -1,0 +1,14 @@
+.content {
+    min-height: 400px;
+}
+
+footer {
+background-color: #555;
+color: white;
+padding: 15px;
+}
+
+.form-row {
+    margin-bottom: 10px;
+}
+
