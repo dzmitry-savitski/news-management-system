@@ -21,6 +21,8 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <form role="form" class="col-lg-4 col-md-6">
+
+                <%--title--%>
                 <div class="form-group row">
                     <label class="control-label col-sm-4" for="title">
                         <spring:message code="pages.news.form.label.title"/>
@@ -33,6 +35,8 @@
                                class="form-control"/>
                     </div>
                 </div>
+
+                <%--date--%>
                 <div class="form-group row">
                     <label class="control-label col-sm-4" for="date">
                         <spring:message code="pages.news.form.label.date"/>
@@ -46,6 +50,8 @@
                                class="form-control "/>
                     </div>
                 </div>
+
+                <%--body--%>
                 <div class="form-group row">
                     <label class="control-label col-sm-4" for="body">
                         <spring:message code="pages.news.form.label.body"/>
@@ -59,6 +65,7 @@
                     </div>
                 </div>
 
+                <%--submit button--%>
                 <div class="form-group row">
                     <div class="col-sm-offset-4 col-sm-8">
                         <input id="newsId" type="hidden" value="${news.id}">

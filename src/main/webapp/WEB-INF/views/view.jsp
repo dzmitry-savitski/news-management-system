@@ -16,6 +16,7 @@
 <div class="container-fluid">
     <%@ include file="inc/menu.jspf" %>
     <div class="panel panel-default">
+
         <%--news title--%>
         <div class="panel-heading">
             <strong>${news.title}</strong>
@@ -44,6 +45,7 @@
 
     </div>
     <div class="panel panel-default">
+
         <%--add comment form--%>
         <div class="panel-body">
             <form role="form">

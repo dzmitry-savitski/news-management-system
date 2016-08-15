@@ -20,6 +20,9 @@
                     <th width="1%">
                         <spring:message code="pages.news.table.id"/>
                     </th>
+                    <th width="1%">
+                        <spring:message code="pages.news.table.date"/>
+                    </th>
                     <th width="auto">
                         <spring:message code="pages.news.table.title"/>
                     </th>
@@ -32,6 +35,7 @@
                 <c:forEach var="news" items="${newsPage.content}">
                     <tr>
                         <td>${news.id}</td>
+                        <td><em><spring:eval expression="news.date"/></em></td>
                         <td>
                             <a href="<c:url value="/news/${news.id}"/>">
                                     ${news.title}
