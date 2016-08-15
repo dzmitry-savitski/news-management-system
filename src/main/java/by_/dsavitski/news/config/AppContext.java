@@ -16,6 +16,14 @@ import java.util.Properties;
 @Configuration
 public class AppContext {
     /**
+     * Required for @Value annotations support
+     */
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    /**
      * Configures message source.
      */
     @Bean(name = {"i18n", "messageSource"})
@@ -32,13 +40,5 @@ public class AppContext {
     @Bean(name = "appConfig")
     public Properties AppConfig() throws IOException {
         return PropertiesLoaderUtils.loadProperties(new ClassPathResource("application.properties"));
-    }
-
-    /**
-     * Required for @Value annotations support
-     */
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
     }
 }

@@ -71,8 +71,8 @@ public class NewsControllerTest extends AbstractTransactionalJUnit4SpringContext
 
     @Test
     public void testNewsNotExists() throws Exception {
-        final int unexistingNewsId = 999;
-        this.mockMvc.perform(get("/news/" + unexistingNewsId)).
+        final int unExistingNewsId = 999;
+        this.mockMvc.perform(get("/news/" + unExistingNewsId)).
                 andExpect(redirectedUrl("/news"));
     }
 

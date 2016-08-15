@@ -18,13 +18,13 @@ public interface CommentRepository extends Repository<Comment, Integer> {
      * Returns list of comments by given News id.
      */
     @Query(value = "SELECT * FROM comments where news_id=:newsId", nativeQuery = true)
-    public List<Comment> findByNewsId(@Param("newsId") Integer newsId);
+    List<Comment> findByNewsId(@Param("newsId") Integer newsId);
 
     /**
      * Creates comment with given news Id and body in DB.
      */
     @Modifying
     @Query(value = "INSERT INTO comments(body, news_id) VALUES (:body,:newsId)", nativeQuery = true)
-    public int insertByNewsId(@Param("newsId") Integer newsId,
+    int insertByNewsId(@Param("newsId") Integer newsId,
                               @Param("body") String body);
 }

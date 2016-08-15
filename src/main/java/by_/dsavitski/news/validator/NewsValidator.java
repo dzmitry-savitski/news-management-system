@@ -50,7 +50,7 @@ public class NewsValidator implements Validator {
         News news = (News) input;
 
         //checking on nulls first
-        validateNotNullorEmpty(news, errors);
+        validateNotNullOrEmpty(news, errors);
         if (errors.hasErrors()) {
             return;
         }
@@ -66,7 +66,7 @@ public class NewsValidator implements Validator {
     /**
      * Checks news object fields on nulls or empty.
      */
-    private void validateNotNullorEmpty(News news, Errors errors) {
+    private void validateNotNullOrEmpty(News news, Errors errors) {
         String title = news.getTitle();
         if ((title == null) || (title.isEmpty())) {
             String errorMessage = getMessage("error.news.title.empty");

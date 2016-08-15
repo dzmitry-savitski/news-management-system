@@ -9,6 +9,7 @@
     <%@ include file="inc/header.jspf" %>
     <script src="<c:url value="/resources/js/comments.js"/>"></script>
     <script>
+        // variable will be used in comments.js
         var newsId = "${news.id}";
     </script>
 </head>

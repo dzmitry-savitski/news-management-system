@@ -61,7 +61,7 @@ public class NewsApi {
      * Required for news validator binding.
      */
     @InitBinder
-    protected void initBinder(WebDataBinder binder) {
+    private void initBinder(WebDataBinder binder) {
         binder.addValidators(newsValidator);
     }
 

@@ -31,8 +31,9 @@ public class CommentsApi {
 
     /**
      * Adds given comment to repository.
+     *
      * @param comment should be json object with fields <code>id</code>
-     * and <code>body</code>, which correspond to comment fields.
+     *                and <code>body</code>, which correspond to comment fields.
      * @return JSON string message with <code>body="ok"</code>
      */
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")

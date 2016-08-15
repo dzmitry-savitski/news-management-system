@@ -72,7 +72,7 @@ public class NewsApiTest {
     }
 
     @Test
-    public void testBadReques() throws Exception {
+    public void testBadRequest() throws Exception {
         this.mockMvc.perform(post("/api/news").
                 contentType(TestUtils.APPLICATION_JSON_UTF8).
                 content("not json content")).

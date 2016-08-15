@@ -61,7 +61,7 @@ public class NewsServiceTest {
         Pageable pageable = mock(Pageable.class);
         when(newsRepository.findAll(pageable)).thenReturn(testPage);
 
-        final Page<News> pageReceived = newsService.getPage(pageable);
+        newsService.getPage(pageable);
 
         verify(pageable).first();
         verify(newsRepository).findAll(pageable);
