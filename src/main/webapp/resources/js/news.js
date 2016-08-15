@@ -1,4 +1,4 @@
-var api = '/api/news';
+var api = contextPath + '/api/news';
 var $newsSubmitButton;
 var $alert;
 var $alertBody;

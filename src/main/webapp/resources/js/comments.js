@@ -1,4 +1,4 @@
-var api = '/api/comments';
+var api = contextPath + '/api/comments';
 var $commentsSubmitButton;
 var $ajaxLoader;
 var $commentsTable;
