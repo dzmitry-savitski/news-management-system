@@ -7,12 +7,12 @@
 <head>
     <title><spring:message code="pages.title"/></title>
     <%@ include file="inc/header.jspf" %>
-    <script src="<c:url value="/resources/js/comments.js"/>"></script>
     <script>
         // variables will be used in comments.js
         var contextPath = "${pageContext.request.contextPath}";
         var newsId = "${news.id}";
     </script>
+    <script src="<c:url value="/resources/js/comments.js"/>"></script>
 </head>
 <body>
 <div class="container-fluid">
