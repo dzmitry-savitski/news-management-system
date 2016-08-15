@@ -10,13 +10,14 @@ import org.springframework.core.io.support.PropertiesLoaderUtils;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Application context configuration.
+ */
 @Configuration
 public class AppContext {
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
-
+    /**
+     * Configures message source.
+     */
     @Bean(name = {"i18n", "messageSource"})
     public ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
@@ -25,8 +26,19 @@ public class AppContext {
         return messageSource;
     }
 
+    /**
+     * Configures application properties bean.
+     */
     @Bean(name = "appConfig")
     public Properties AppConfig() throws IOException {
         return PropertiesLoaderUtils.loadProperties(new ClassPathResource("application.properties"));
+    }
+
+    /**
+     * Required for @Value annotations support
+     */
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
     }
 }

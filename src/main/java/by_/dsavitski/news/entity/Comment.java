@@ -2,6 +2,9 @@ package by_.dsavitski.news.entity;
 
 import javax.persistence.*;
 
+/**
+ * Represents comment entity.
+ */
 @Entity
 @Table(name = "comments")
 public class Comment {

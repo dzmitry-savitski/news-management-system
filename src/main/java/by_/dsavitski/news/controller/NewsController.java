@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 
+/**
+ * News page controller.
+ * Mapped on <code>/news</code> URI.
+ */
 @Controller
 @RequestMapping("/news")
 @PropertySource("classpath:application.properties")
@@ -21,6 +25,9 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
 
+    /**
+     * Shows news list by given pageable object.
+     */
     @RequestMapping
     public String allNews(Model model,
                           Pageable pageable,
@@ -30,6 +37,10 @@ public class NewsController {
         return "news";
     }
 
+    /**
+     * Shows page with given single news object.
+     * If given id doesn't exist - redirects to <code>/news</code> page.
+     */
     @RequestMapping(value = "/{id}")
     public String viewNews(@PathVariable(value = "id") int id,
                            Model model) {
@@ -42,6 +53,9 @@ public class NewsController {
         }
     }
 
+    /**
+     * Shows empty page for adding new news.
+     */
     @RequestMapping(value = "/modify")
     public String addNews(Model model) {
         final News event = new News();
@@ -50,6 +64,10 @@ public class NewsController {
         return "modify";
     }
 
+    /**
+     * Shows edit page with given single news object.
+     * If given id doesn't exist - redirects to <code>/news</code> page.
+     */
     @RequestMapping(value = "/modify/{id}")
     public String editNews(@PathVariable(value = "id") int id,
                            Model model) {
@@ -62,7 +80,16 @@ public class NewsController {
         }
     }
 
-    private Pageable updateSize(final Pageable source, final int size) {
-        return new PageRequest(source.getPageNumber(), size, source.getSort());
+    /**
+     * Modifies page size first time.
+     * In this case annotation <code>@PageableDefault</code> isn't usable,
+     * because page size parameter dynamically received from properties file.
+     */
+    private Pageable updateSize(final Pageable source, final int neededSize) {
+        if (source.getPageSize() != neededSize) {
+            return new PageRequest(source.getPageNumber(), neededSize, source.getSort());
+        } else {
+            return source;
+        }
     }
 }

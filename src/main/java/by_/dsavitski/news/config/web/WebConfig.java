@@ -11,20 +11,33 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+/**
+ * Spring java config for web application.
+ */
 @Configuration
 @EnableWebMvc
 @EnableSpringDataWebSupport
-@ComponentScan({"by_.dsavitski.news.**"})
+@ComponentScan(basePackages = {"by_.dsavitski.news.**",
+        "by_.dsavitski.news.service.**",
+        "by_.dsavitski.news.validator.**"})
 public class WebConfig extends WebMvcConfigurerAdapter {
+    /**
+     * View resolver configuration
+     */
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         viewResolver.setViewClass(JstlView.class);
+        //exposes application config for jsp pages
+        viewResolver.setExposedContextBeanNames("appConfig");
         return viewResolver;
     }
 
+    /**
+     * Configures resources locations.
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");

@@ -13,6 +13,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/**
+ * Spring data jpa and hibernate configuration.
+ */
 @Configuration
 @EnableJpaRepositories(basePackages = {"by_.dsavitski.news.repository"})
 @EnableTransactionManagement
@@ -35,6 +38,9 @@ public class PersistenceContext {
         return entityManagerFactoryBean;
     }
 
+    /**
+     * Required for transaction support.
+     */
     @Bean
     JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

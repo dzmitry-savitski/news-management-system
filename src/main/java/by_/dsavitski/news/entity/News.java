@@ -6,6 +6,9 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Represents news entity.
+ */
 @Entity
 @Table(name = "news")
 public class News {
@@ -77,6 +80,9 @@ public class News {
         this.comments = comments;
     }
 
+    /**
+     * Equals, hashCode & toString methods implemented for testing purposes.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -29,7 +29,7 @@
                         <input id="title"
                                type="text"
                                value="${news.title}"
-                               maxlength="255"
+                               maxlength="${appConfig['news.title.length.max']}"
                                class="form-control"/>
                     </div>
                 </div>
@@ -53,8 +53,9 @@
                     <div class="col-sm-8">
                         <textarea id="body"
                                   class="form-control"
-                                  rows="3"
-                                  maxlength="2000">${news.body}</textarea>
+                                  maxlength="${appConfig['news.body.length.max']}"
+                                  rows="10"
+                                  cols="10">${news.body}</textarea>
                     </div>
                 </div>
 

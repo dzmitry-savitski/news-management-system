@@ -47,7 +47,7 @@ function updateComments() {
     $ajaxLoader.show();
     $.ajax({
         type: 'GET',
-        url: api +"/" + newsId,
+        url: api + "/" + newsId,
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function (message) {

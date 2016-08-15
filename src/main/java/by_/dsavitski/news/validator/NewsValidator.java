@@ -12,6 +12,9 @@ import org.springframework.web.util.HtmlUtils;
 
 import java.util.Locale;
 
+/**
+ * Represents validator for News object.
+ */
 @Component
 public class NewsValidator implements Validator {
     private static final String ENCODING = "UTF-8";
@@ -31,26 +34,39 @@ public class NewsValidator implements Validator {
     @Autowired
     private MessageSource msg;
 
+    /**
+     * Suitable only for <code>News.class</code>
+     */
     @Override
     public boolean supports(Class<?> aClass) {
         return News.class.equals(aClass);
     }
 
+    /**
+     * Main validation method.
+     */
     @Override
     public void validate(Object input, Errors errors) {
         News news = (News) input;
 
-        validateNotNull(news, errors);
+        //checking on nulls first
+        validateNotNullorEmpty(news, errors);
         if (errors.hasErrors()) {
             return;
         }
 
+        // escaping html
         escapeHtml(news);
+
+        // final length checks
         validateTitle(news.getTitle(), errors);
         validateBody(news.getBody(), errors);
     }
 
-    private void validateNotNull(News news, Errors errors) {
+    /**
+     * Checks news object fields on nulls or empty.
+     */
+    private void validateNotNullorEmpty(News news, Errors errors) {
         String title = news.getTitle();
         if ((title == null) || (title.isEmpty())) {
             String errorMessage = getMessage("error.news.title.empty");
@@ -69,11 +85,18 @@ public class NewsValidator implements Validator {
         }
     }
 
+    /**
+     * Escapes html to avoid XSS attacks.
+     * News date is parsed by JSON mapper, so it filtered in controller.
+     */
     private void escapeHtml(News news) {
         news.setTitle(HtmlUtils.htmlEscape(news.getTitle().trim(), ENCODING));
         news.setBody(HtmlUtils.htmlEscape(news.getBody().trim(), ENCODING));
     }
 
+    /**
+     * Validates title length.
+     */
     private void validateTitle(String title, Errors errors) {
         int titleLength = title.length();
         if ((titleLength < titleLengthMin) || (titleLength > titleLengthMax)) {
@@ -84,6 +107,9 @@ public class NewsValidator implements Validator {
         }
     }
 
+    /**
+     * Validates body length.
+     */
     private void validateBody(String body, Errors errors) {
         int bodyLength = body.length();
         if ((bodyLength < bodyLengthMin) || (bodyLength > bodyLengthMax)) {
@@ -94,6 +120,9 @@ public class NewsValidator implements Validator {
         }
     }
 
+    /**
+     * Creates new reject message in errors object.
+     */
     private String getMessage(String code, Object... params) {
         Locale locale = LocaleContextHolder.getLocale();
         return msg.getMessage(code, params, locale);

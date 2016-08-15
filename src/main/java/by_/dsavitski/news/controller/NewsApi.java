@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 
+/**
+ * REST controller for work with news.
+ */
 @RestController
 @RequestMapping("/api/news")
 public class NewsApi {
@@ -28,6 +31,14 @@ public class NewsApi {
     @Autowired
     private MessageSource messageSource;
 
+    /**
+     * Saves or updates given news object.
+     * News object validated before saving.
+     * In case of errors code 4XX or 5XX returned and message with field
+     * <code>body</code>, which contains error message.
+     * If saving performs successfully then returned a message
+     * with <code>body</code>, which contains success message.
+     */
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public Object saveOrUpdateNews(@RequestBody @Validated News news,
@@ -46,16 +57,22 @@ public class NewsApi {
         }
     }
 
+    /**
+     * Required for news validator binding.
+     */
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.addValidators(newsValidator);
     }
 
+    /**
+     * Handles exception in case of malformed user request.
+     * In common cases that would be date field, so date error message returned.
+     */
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Message handleJsonMappingException(JsonMappingException ex, Locale locale) {
         String message = messageSource.getMessage("error.news.date.format", null, locale);
         return new Message(message);
     }
-
 }

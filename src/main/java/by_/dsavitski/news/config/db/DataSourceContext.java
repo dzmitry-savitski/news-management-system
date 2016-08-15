@@ -8,6 +8,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
+/**
+ * Data source configuration.
+ * Don't used JNDI for simplifying configuration for test task.
+ */
 @Configuration
 @PropertySource("classpath:persistence.properties")
 public class DataSourceContext {

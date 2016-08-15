@@ -1,7 +1,7 @@
 package by_.dsavitski.news.json;
 
 /**
- * Simple wrapper for JSON response
+ * Simple wrapper for JSON response.
  */
 public class Message {
     private Object body;
